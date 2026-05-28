@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Category {
-  id       Int  @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   parentId Int?
   typeId   Int?
   name     String
@@ -27,7 +27,11 @@ model Expense {
   date       DateTime
   price      Int
   content    String?
+  cuisineId  Int?
+  medicalId  Int?
 
+  medical  Medical? @relation(fields: [medicalId], references: [id])
+  cuisine  Cuisine? @relation(fields: [cuisineId], references: [id])
   category Category @relation(fields: [categoryId], references: [id])
 }
 
@@ -36,4 +40,18 @@ model ExpenseType {
   name String
 
   categories Category[]
+}
+
+model Cuisine {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  expense Expense[]
+}
+
+model Medical {
+  id         Int    @id @default(autoincrement())
+  department String
+
+  expense Expense[]
 }

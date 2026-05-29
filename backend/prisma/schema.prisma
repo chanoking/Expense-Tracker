@@ -42,6 +42,14 @@ model ExpenseType {
   categories Category[]
 }
 
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
 model Cuisine {
   id   Int    @id @default(autoincrement())
   name String

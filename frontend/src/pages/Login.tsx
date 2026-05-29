@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/login.css";
 import type { LoginForm } from "../types/Auth";
 
 function Login() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -26,7 +27,7 @@ function Login() {
 
       const { accessToken } = await res.json();
       localStorage.setItem('accessToken', accessToken);
-      alert('로그인 성공!');
+      navigate('/');
     } catch {
       alert('서버에 연결할 수 없습니다.');
     }

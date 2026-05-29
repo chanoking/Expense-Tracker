@@ -29,6 +29,8 @@ function Signup() {
         return;
       }
 
+      const { accessToken } = await res.json();
+      localStorage.setItem('accessToken', accessToken);
       alert('회원가입이 완료되었습니다.');
     } catch {
       alert('서버에 연결할 수 없습니다.');

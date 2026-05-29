@@ -24,6 +24,8 @@ function Login() {
         return;
       }
 
+      const { accessToken } = await res.json();
+      localStorage.setItem('accessToken', accessToken);
       alert('로그인 성공!');
     } catch {
       alert('서버에 연결할 수 없습니다.');

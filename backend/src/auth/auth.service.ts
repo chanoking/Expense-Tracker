@@ -3,6 +3,7 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from '../prisma/prisma.service';
 import { LoginDto } from './dto/login.dto';
@@ -10,7 +11,10 @@ import { SignupDto } from './dto/signup.dto';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly jwt: JwtService,
+  ) {}
 
   async signup(dto: SignupDto) {
     const existing = await this.prisma.user.findUnique({
@@ -30,7 +34,8 @@ export class AuthService {
       },
     });
 
-    return { id: user.id, name: user.name, email: user.email };
+    const token = this.issueToken(user.id, user.email);
+    return { accessToken: token, user: { id: user.id, name: user.name, email: user.email } };
   }
 
   async login(dto: LoginDto) {
@@ -46,6 +51,11 @@ export class AuthService {
       throw new UnauthorizedException('이메일 또는 비밀번호가 올바르지 않습니다.');
     }
 
-    return { id: user.id, name: user.name, email: user.email };
+    const token = this.issueToken(user.id, user.email);
+    return { accessToken: token, user: { id: user.id, name: user.name, email: user.email } };
+  }
+
+  private issueToken(userId: number, email: string) {
+    return this.jwt.sign({ sub: userId, email });
   }
 }

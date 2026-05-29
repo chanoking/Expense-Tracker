@@ -10,8 +10,24 @@ function Login() {
     formState: { errors },
   } = useForm<LoginForm>();
 
-  const onSubmit = (data: LoginForm) => {
-    console.log(data);
+  const onSubmit = async (data: LoginForm) => {
+    try {
+      const res = await fetch('http://localhost:3000/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        alert(err.message ?? '로그인에 실패했습니다.');
+        return;
+      }
+
+      alert('로그인 성공!');
+    } catch {
+      alert('서버에 연결할 수 없습니다.');
+    }
   };
 
   return (

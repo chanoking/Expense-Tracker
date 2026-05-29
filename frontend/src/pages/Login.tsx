@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import "../css/login.css";
 import type { LoginForm } from "../types/Auth";
 
@@ -69,7 +70,7 @@ function Login() {
         </form>
 
         <div className="login-links">
-          <a href="#">Sign Up</a>
+          <Link to="/signup">Sign Up</Link>
           <a href="#">Find Account</a>
           <a href="#">Reset Password</a>
         </div>

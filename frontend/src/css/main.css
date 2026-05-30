@@ -1,0 +1,295 @@
+.main-page {
+  min-height: 100vh;
+  background: #f7f7f7;
+}
+
+/* Header */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 60px;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.main-header .logo {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-user {
+  font-size: 14px;
+  color: #555;
+}
+
+.logout-button {
+  padding: 7px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #f5f5f5;
+}
+
+/* Content */
+.main-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* Summary cards */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.summary-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.summary-card .label {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.summary-card .amount {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #111;
+}
+
+.summary-card .amount span {
+  font-size: 15px;
+  font-weight: 400;
+  color: #888;
+  margin-left: 4px;
+}
+
+/* Expense section */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.add-button {
+  padding: 9px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #ffe500;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background: #f5dc00;
+}
+
+/* Expense list */
+.expense-list {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.expense-list-header {
+  display: grid;
+  grid-template-columns: 100px 1fr 120px 100px;
+  padding: 12px 20px;
+  background: #fafafa;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 13px;
+  color: #888;
+  font-weight: 500;
+}
+
+.expense-item {
+  display: grid;
+  grid-template-columns: 100px 1fr 120px 100px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+  align-items: center;
+}
+
+.expense-item:last-child {
+  border-bottom: none;
+}
+
+.expense-item .date {
+  color: #888;
+}
+
+.expense-item .price {
+  font-weight: 600;
+  text-align: right;
+}
+
+.expense-empty {
+  padding: 60px 0;
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  width: 440px;
+  max-width: calc(100vw - 32px);
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 24px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+.form-field input,
+.form-field select {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: #111;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.modal-cancel {
+  flex: 1;
+  height: 46px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.modal-submit {
+  flex: 2;
+  height: 46px;
+  border: none;
+  border-radius: 8px;
+  background: #ffe500;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modal-submit:hover {
+  background: #f5dc00;
+}
+
+@media (max-width: 640px) {
+  .main-header {
+    padding: 0 16px;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .expense-list-header {
+    display: none;
+  }
+
+  .expense-item {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 4px;
+  }
+
+  .expense-item .category {
+    grid-column: 1;
+    font-weight: 500;
+  }
+
+  .expense-item .price {
+    grid-column: 2;
+    text-align: right;
+  }
+
+  .expense-item .date {
+    font-size: 12px;
+    color: #aaa;
+  }
+
+  .expense-item .content {
+    font-size: 12px;
+    color: #888;
+  }
+}
